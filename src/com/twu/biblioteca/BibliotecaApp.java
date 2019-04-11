@@ -7,5 +7,7 @@ public class BibliotecaApp {
         Menu menu = new Menu();
         System.out.println(library.getWelcomeMessage());
         System.out.println(menu.getMenuMessage());
+        System.out.print("Please input menu Id: ");
+        menu.userInput();
     }
 }
