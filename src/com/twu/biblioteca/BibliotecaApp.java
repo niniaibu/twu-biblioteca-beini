@@ -3,13 +3,16 @@ package com.twu.biblioteca;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        Library library = new Library();
-        library.displayWelcomeMessage();
+        try {
+            Library library = new Library();
+            library.displayWelcomeMessage();
 
-        while (!library.getMenu().isQuit()) {
-            library.getMenu().displayMenu();
-            System.out.print("Please input menu Id: ");
-            library.getMenu().judgeUserInput();
+            while (!library.isQuit()) {
+                library.getMenu().displayMenu();
+                library.getMenu().judgeUserInput();
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
         }
     }
 }

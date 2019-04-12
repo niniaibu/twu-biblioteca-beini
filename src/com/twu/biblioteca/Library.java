@@ -19,9 +19,6 @@ public class Library {
     }
 
     public boolean isQuit() {
-        if (menu.isQuit()) {
-            return true;
-        }
-        return false;
+        return menu.isQuit();
     }
 }

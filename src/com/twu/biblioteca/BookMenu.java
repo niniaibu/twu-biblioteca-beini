@@ -27,10 +27,15 @@ public class BookMenu {
         books.forEach(book -> System.out.println(book.getDisplayMessage()));
     }
 
-    public boolean checkoutBook(Book book) {
-        if (books.contains(book)) {
-            return true;
+    public void checkoutBook(String BookName) {
+        for (Book book : books) {
+            if (BookName.equals(book.getName())) {
+                books.remove(book);
+                book.setCheckout(true);
+                System.out.println("Thank you! Enjoy the book");
+                return;
+            }
         }
-        return false;
+        System.out.println("Sorry, that book is not available");
     }
 }

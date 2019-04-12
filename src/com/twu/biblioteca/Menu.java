@@ -8,37 +8,50 @@ import java.util.List;
 
 public class Menu {
     private List<Option> options;
-    private BookMenu bookMenu;
     private boolean quit;
+    private BookMenu bookMenu;
 
     public Menu() {
         this.quit = false;
         this.options = new ArrayList<>();
+        this.bookMenu = new BookMenu();
         addOption();
     }
 
     public void addOption() {
-        options.add(new Option(1, "List of books"));
         options.add(new Option(-1, "quit"));
+        options.add(new Option(1, "List of books"));
         options.add(new Option(2, "Checkout out a book"));
     }
 
     public void judgeUserInput() {
         try {
-            InputStreamReader reader = new InputStreamReader(System.in);
-            String input = new BufferedReader(reader).readLine();
-            if (!isValidInput(input)) {
+            System.out.print("Please input menu Id: ");
+            String userMenuInput = getUserInput();
+            if (!isValidInput(userMenuInput)) {
                 return;
             }
-            if (input.equals("1")) {
-                this.bookMenu = new BookMenu();
-                bookMenu.displayBooks();
-            } else if (input.equals("-1")) {
-                this.quit = true;
-            }
+            judgeUserMenuInput(userMenuInput);
         } catch (IOException e) {
             System.out.println("IO Exception");
         }
+    }
+
+    public void judgeUserMenuInput(String userMenuInput) throws IOException {
+        if (userMenuInput.equals("1")) {
+            bookMenu.displayBooks();
+        } else if (userMenuInput.equals("-1")) {
+            this.quit = true;
+        } else if (userMenuInput.equals("2")) {
+            System.out.println("Please input checkout book name: ");
+            String userBookInput = getUserInput();
+            bookMenu.checkoutBook(userBookInput);
+        }
+    }
+
+    private String getUserInput() throws IOException {
+        InputStreamReader reader = new InputStreamReader(System.in);
+        return new BufferedReader(reader).readLine();
     }
 
     public boolean isValidInput(String userInputId) {

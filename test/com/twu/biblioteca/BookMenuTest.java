@@ -10,12 +10,12 @@ import static junit.framework.TestCase.assertEquals;
 
 public class BookMenuTest {
     private BookMenu bookMenu;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
     @Before
     public void setUp() {
         this.bookMenu = new BookMenu();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(out));
     }
 
     @Test
@@ -30,7 +30,33 @@ public class BookMenuTest {
                 "Thinking in Java|Bruce Eckel|1998\n" +
                 "Head First Design Patterns|Eric Freeman|2004\n";
         bookMenu.displayBooks();
-        assertEquals(outContent.toString(), outputString);
+        assertEquals(out.toString(), outputString);
+    }
+
+    @Test
+    public void testBookCanCheckout() {
+        String bookName = "Effective Java";
+        String output = "Thank you! Enjoy the book\n";
+        bookMenu.checkoutBook(bookName);
+        assertEquals(out.toString(), output);
+    }
+
+    @Test
+    public void testBookCannotCheckoutWithFormatWrong() {
+        String bookName = "effective java";
+        String output = "Sorry, that book is not available\n";
+        bookMenu.checkoutBook(bookName);
+        assertEquals(out.toString(), output);
+    }
+
+    @Test
+    public void testBookCannotCheckoutWithTwiceCheckout() {
+        String bookName = "Effective Java";
+        String output = "Thank you! Enjoy the book\n" +
+                "Sorry, that book is not available\n";
+        bookMenu.checkoutBook(bookName);
+        bookMenu.checkoutBook(bookName);
+        assertEquals(out.toString(), output);
     }
 
 
