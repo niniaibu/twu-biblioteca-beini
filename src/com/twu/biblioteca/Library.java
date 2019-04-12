@@ -6,7 +6,7 @@ public class Library {
 
 
     public Library() {
-        this.welcomeMessage = "Welcome to Biblioteca. Your one-step-shop for great book titles in Bangalore!";
+        this.welcomeMessage = "Welcome to Biblioteca. Your one-step-shop for great book titles in Bangalore!\n";
         menu = new Menu();
     }
 
@@ -14,7 +14,14 @@ public class Library {
         return menu;
     }
 
-    public String getWelcomeMessage() {
-        return welcomeMessage;
+    public void displayWelcomeMessage() {
+        System.out.println(welcomeMessage);
+    }
+
+    public boolean isQuit() {
+        if (menu.isQuit()) {
+            return true;
+        }
+        return false;
     }
 }

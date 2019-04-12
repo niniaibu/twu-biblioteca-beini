@@ -11,7 +11,7 @@ public class BookMenu {
         addBook();
     }
 
-    private List<Book> addBook() {
+    public List<Book> addBook() {
         books.add(new Book("Head First Java", "Kathy Sierra", 2003));
         books.add(new Book("Effective Java", "Joshua Bloch", 2001));
         books.add(new Book("Thinking in Java", "Bruce Eckel", 1998));
@@ -25,5 +25,12 @@ public class BookMenu {
 
     public void displayBooks() {
         books.forEach(book -> System.out.println(book.getDisplayMessage()));
+    }
+
+    public boolean checkoutBook(Book book) {
+        if (books.contains(book)) {
+            return true;
+        }
+        return false;
     }
 }

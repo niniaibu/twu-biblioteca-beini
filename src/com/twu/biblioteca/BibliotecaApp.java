@@ -4,9 +4,12 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         Library library = new Library();
-        System.out.println(library.getWelcomeMessage());
-        System.out.println(library.getMenu().getMenuMessage());
-        System.out.print("Please input menu Id: ");
-        library.getMenu().userInput();
+        library.displayWelcomeMessage();
+
+        while (!library.getMenu().isQuit()) {
+            library.getMenu().displayMenu();
+            System.out.print("Please input menu Id: ");
+            library.getMenu().judgeUserInput();
+        }
     }
 }
