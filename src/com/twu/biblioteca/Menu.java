@@ -7,10 +7,14 @@ import java.io.InputStreamReader;
 public class Menu {
     private String menuMessage;
     private Integer optionId;
+    private BookMenu bookMenu;
 
     public Menu() {
         optionId = 1;
         this.menuMessage = "Main menu:\n" + optionId + " Books";
+        if (optionId == 1) {
+            bookMenu = new BookMenu();
+        }
     }
 
     public String getMenuMessage() {
@@ -21,11 +25,17 @@ public class Menu {
         return optionId;
     }
 
+    public BookMenu getBookMenu() {
+        return bookMenu;
+    }
+
     public void userInput() {
         try {
             InputStreamReader reader = new InputStreamReader(System.in);
             String input = new BufferedReader(reader).readLine();
-            isValidInput(input);
+            if (isValidInput(input)) {
+                bookMenu.displayBooks();
+            }
         } catch (IOException e) {
             System.out.println("IO Exception");
         }

@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -12,7 +11,6 @@ import static junit.framework.TestCase.assertEquals;
 public class BookMenuTest {
     private BookMenu bookMenu;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
 
     @Before
     public void setUp() {
