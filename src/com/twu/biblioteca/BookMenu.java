@@ -24,6 +24,6 @@ public class BookMenu {
     }
 
     public void displayBooks() {
-        books.forEach(book -> System.out.println(book.getName()));
+        books.forEach(book -> System.out.println(book.getDisplayMessage()));
     }
 }

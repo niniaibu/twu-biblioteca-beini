@@ -25,10 +25,10 @@ public class BookMenuTest {
 
     @Test
     public void testBookMenuDisplay() {
-        String outputString = "Head First Java\n" +
-                "Effective Java\n" +
-                "Thinking in Java\n" +
-                "Head First Design Patterns\n";
+        String outputString = "Head First Java|Kathy Sierra|2003\n" +
+                "Effective Java|Joshua Bloch|2001\n" +
+                "Thinking in Java|Bruce Eckel|1998\n" +
+                "Head First Design Patterns|Eric Freeman|2004\n";
         bookMenu.displayBooks();
         assertEquals(outContent.toString(), outputString);
     }

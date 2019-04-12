@@ -27,4 +27,9 @@ public class BookTest {
     public void testBookpublication() {
         assertEquals(book.getPublication(), 2000);
     }
+
+    @Test
+    public void testDisplayMessage() {
+        assertEquals(book.getDisplayMessage(),"java|nini|2000");
+    }
 }

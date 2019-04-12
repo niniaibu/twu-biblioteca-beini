@@ -26,6 +26,7 @@ public class Book {
         return publication;
     }
 
-
-
+    public String getDisplayMessage() {
+        return this.name + "|" + this.author + "|" + this.publication;
+    }
 }
