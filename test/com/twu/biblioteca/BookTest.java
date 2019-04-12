@@ -32,4 +32,14 @@ public class BookTest {
     public void testDisplayMessage() {
         assertEquals(book.getDisplayMessage(),"java|nini|2000");
     }
+
+    @Test
+    public void testCheckoutBook() {
+        assertEquals(book.isCheckout(),false);
+    }
+
+    @Test
+    public void testReturnBook() {
+        assertEquals(book.isReturn(),true);
+    }
 }

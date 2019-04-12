@@ -22,6 +22,7 @@ public class Menu {
         options.add(new Option(-1, "quit"));
         options.add(new Option(1, "List of books"));
         options.add(new Option(2, "Checkout out a book"));
+        options.add(new Option(3, "Return a book"));
     }
 
     public void judgeUserInput() {
@@ -46,6 +47,10 @@ public class Menu {
             System.out.println("Please input checkout book name: ");
             String userBookInput = getUserInput();
             bookMenu.checkoutBook(userBookInput);
+        } else if (userMenuInput.equals("3")) {
+            System.out.println("Please input return book name: ");
+            String userBookInput = getUserInput();
+            bookMenu.returnBook(userBookInput);
         }
     }
 

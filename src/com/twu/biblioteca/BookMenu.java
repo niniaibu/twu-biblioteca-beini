@@ -27,15 +27,27 @@ public class BookMenu {
         books.forEach(book -> System.out.println(book.getDisplayMessage()));
     }
 
-    public void checkoutBook(String BookName) {
+    public void checkoutBook(String bookName) {
         for (Book book : books) {
-            if (BookName.equals(book.getName())) {
-                books.remove(book);
+            if (bookName.equals(book.getName()) && !book.isCheckout()) {
                 book.setCheckout(true);
+                book.setReturn(false);
                 System.out.println("Thank you! Enjoy the book");
                 return;
             }
         }
         System.out.println("Sorry, that book is not available");
+    }
+
+    public void returnBook(String bookName) {
+        for (Book book : books) {
+            if (bookName.equals(book.getName()) && book.isCheckout() && !book.isReturn()) {
+                book.setCheckout(false);
+                book.setReturn(true);
+                System.out.println("Thank you for returning the book");
+                return;
+            }
+        }
+        System.out.println("That is not a valid book to return");
     }
 }

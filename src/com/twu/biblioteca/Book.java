@@ -5,6 +5,7 @@ public class Book {
     private String author;
     private int publication;
     private boolean isCheckout;
+    private boolean isReturn;
 
     public Book() {
 
@@ -15,6 +16,7 @@ public class Book {
         this.author = author;
         this.publication = publication;
         this.isCheckout = false;
+        this.isReturn = true;
     }
 
     public String getName() {
@@ -39,5 +41,13 @@ public class Book {
 
     public void setCheckout(boolean checkout) {
         isCheckout = checkout;
+    }
+
+    public boolean isReturn() {
+        return isReturn;
+    }
+
+    public void setReturn(boolean aReturn) {
+        isReturn = aReturn;
     }
 }

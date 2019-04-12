@@ -59,5 +59,35 @@ public class BookMenuTest {
         assertEquals(out.toString(), output);
     }
 
+    @Test
+    public void testBookCanReturn() {
+        String bookName = "Effective Java";
+        bookMenu.checkoutBook(bookName);
+        String output = "Thank you! Enjoy the book\n" +
+                "Thank you for returning the book\n";
+        bookMenu.returnBook(bookName);
+        assertEquals(out.toString(), output);
+    }
+
+    @Test
+    public void testBookCannotReturnWithFormatWrong() {
+        String bookName = "effective java";
+        String output = "That is not a valid book to return\n";
+        bookMenu.returnBook(bookName);
+        assertEquals(out.toString(), output);
+    }
+
+    @Test
+    public void testBookCannotReturnWithTwice() {
+        String bookName = "Effective Java";
+        bookMenu.checkoutBook(bookName);
+        String output = "Thank you! Enjoy the book\n" +
+                "Thank you for returning the book\n" +
+                "That is not a valid book to return\n";
+        bookMenu.returnBook(bookName);
+        bookMenu.returnBook(bookName);
+        assertEquals(out.toString(), output);
+    }
+
 
 }
