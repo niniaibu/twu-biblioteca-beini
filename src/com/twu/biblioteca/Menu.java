@@ -10,11 +10,13 @@ public class Menu {
     private List<Option> options;
     private boolean quit;
     private BookMenu bookMenu;
+    private MovieMenu movieMenu;
 
     public Menu() {
         this.quit = false;
         this.options = new ArrayList<>();
         this.bookMenu = new BookMenu();
+        this.movieMenu = new MovieMenu();
         addOption();
     }
 
@@ -23,6 +25,8 @@ public class Menu {
         options.add(new Option(1, "List of books"));
         options.add(new Option(2, "Checkout out a book"));
         options.add(new Option(3, "Return a book"));
+        options.add(new Option(4, "List of movies"));
+        // options.add(new Option(5, "Checkout out a movie"));
     }
 
     public void judgeUserInput() {
@@ -51,6 +55,8 @@ public class Menu {
             System.out.println("Please input return book name: ");
             String userBookInput = getUserInput();
             bookMenu.returnBook(userBookInput);
+        } else if (userMenuInput.equals("4")) {
+            movieMenu.displayMovieMenu();
         }
     }
 
