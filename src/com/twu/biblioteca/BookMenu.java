@@ -5,7 +5,6 @@ import java.util.List;
 
 public class BookMenu {
     private List<Book> books;
-    private User user;
 
     public BookMenu() {
         this.books = new ArrayList<>();
@@ -32,8 +31,8 @@ public class BookMenu {
         for (Book book : books) {
             if (bookName.equals(book.getName()) && !book.isCheckout()) {
                 book.setCheckout(true);
+                book.setUser(userLogin);
                 book.setReturn(false);
-
                 System.out.println("Thank you! Enjoy the book");
                 return;
             }
@@ -53,9 +52,12 @@ public class BookMenu {
         System.out.println("That is not a valid book to return");
     }
 
-    // public void viewCheckoutedBooks() {
-    //     for (Book book : books) {
-    //         if (book.isCheckout())
-    //     }
-    // }
+    public void viewCheckoutedBooks() {
+        System.out.println("Book cheched out: ");
+        for (Book book : books) {
+            if (book.isCheckout()) {
+                System.out.println(book.getName()+ "|"+ book.getUser().getLibraryNumber());
+            }
+        }
+    }
 }

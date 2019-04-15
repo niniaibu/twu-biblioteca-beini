@@ -91,5 +91,35 @@ public class BookMenuTest {
         assertEquals(out.toString(), output);
     }
 
+    @Test
+    public void testBookCheckedoutEmpty() {
+        bookMenu.viewCheckoutedBooks();
+        String output = "Book cheched out: \n";
+        assertEquals(out.toString(), output);
+    }
+
+    @Test
+    public void testBookCheckedoutOneBookCheckout() {
+        String bookName = "Effective Java";
+        bookMenu.checkoutBook(bookName, user);
+        bookMenu.viewCheckoutedBooks();
+        String output = "Thank you! Enjoy the book\n" +
+                "Book cheched out: \n" +
+                "Effective Java|111-1111\n";
+        assertEquals(out.toString(), output);
+    }
+
+    @Test
+    public void testBookCheckedoutMultipleBookCheckout() {
+        bookMenu.checkoutBook("Effective Java", user);
+        bookMenu.checkoutBook("Head First Java", user);
+        bookMenu.viewCheckoutedBooks();
+        String output = "Thank you! Enjoy the book\n" +
+                "Thank you! Enjoy the book\n" +
+                "Book cheched out: \n" +
+                "Head First Java|111-1111\n" +
+                "Effective Java|111-1111\n";
+        assertEquals(out.toString(), output);
+    }
 
 }

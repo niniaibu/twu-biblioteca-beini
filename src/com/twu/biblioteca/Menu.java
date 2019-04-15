@@ -78,8 +78,7 @@ public class Menu {
             String password = getUserInput();
             getLoginUser(libraryNumber, password);
         } else if (menuUserInput.equals("7")) {
-
-
+            bookMenu.viewCheckoutedBooks();
         }
     }
 
