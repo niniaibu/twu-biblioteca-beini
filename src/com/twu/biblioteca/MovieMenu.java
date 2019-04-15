@@ -25,4 +25,16 @@ public class MovieMenu {
     public void displayMovieMenu() {
         movies.forEach(Movie::displayMovie);
     }
+
+    public void checkoutMovie(String movieName) {
+        for (Movie movie : movies) {
+            if (movieName.equals(movie.getName())) {
+                movie.setCheckout(true);
+                System.out.println("Thank you! Enjoy the movie");
+                return;
+            }
+        }
+        System.out.println("Sorry, that movie is not available");
+    }
 }
+

@@ -26,7 +26,7 @@ public class Menu {
         options.add(new Option(2, "Checkout out a book"));
         options.add(new Option(3, "Return a book"));
         options.add(new Option(4, "List of movies"));
-        // options.add(new Option(5, "Checkout out a movie"));
+        options.add(new Option(5, "Checkout out a movie"));
     }
 
     public void judgeUserInput() {
@@ -57,6 +57,10 @@ public class Menu {
             bookMenu.returnBook(userBookInput);
         } else if (userMenuInput.equals("4")) {
             movieMenu.displayMovieMenu();
+        } else if (userMenuInput.equals("5")) {
+            System.out.println("Please input checkout movie name: ");
+            String userMovieInput = getUserInput();
+            movieMenu.checkoutMovie(userMovieInput);
         }
     }
 

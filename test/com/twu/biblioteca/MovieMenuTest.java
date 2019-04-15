@@ -33,5 +33,21 @@ public class MovieMenuTest {
         assertEquals(out.toString(), output);
     }
 
+    @Test
+    public void testMovieCanCheckout() {
+        String movieName = "Titanic";
+        String output = "Thank you! Enjoy the movie\n";
+        movieMenu.checkoutMovie(movieName);
+        assertEquals(out.toString(), output);
+    }
+
+    @Test
+    public void testMovieCannotCheckoutWithFormatWrong() {
+        String movieName = "titanic";
+        String output = "Sorry, that movie is not available\n";
+        movieMenu.checkoutMovie(movieName);
+        assertEquals(out.toString(), output);
+    }
+
 
 }

@@ -5,6 +5,7 @@ public class Movie {
     private int year;
     private String director;
     private int rating;
+    private boolean isCheckout;
 
     public Movie() {
     }
@@ -14,42 +15,35 @@ public class Movie {
         this.year = year;
         this.director = director;
         this.rating = rating;
+        isCheckout = false;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getYear() {
         return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
     }
 
     public String getDirector() {
         return director;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
     public int getRating() {
         return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
     }
 
     public void displayMovie() {
         String displayMovie = this.name + "|" + this.year + "|" + this.director + "|" + this.rating;
         System.out.println(displayMovie);
+    }
+
+    public boolean isCheckout() {
+        return isCheckout;
+    }
+
+    public void setCheckout(boolean checkout) {
+        isCheckout = checkout;
     }
 }

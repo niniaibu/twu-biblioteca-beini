@@ -32,4 +32,16 @@ public class MovieTest {
     public void testMovieRating() {
         assertEquals(movie.getRating(), 10);
     }
+
+    @Test
+    public void testMovieIsCheckoutOrigin() {
+        assertEquals(movie.isCheckout(), false);
+    }
+
+    @Test
+    public void testMovieCheckedout() {
+        movie.setCheckout(true);
+        assertEquals(movie.isCheckout(),true
+        );
+    }
 }
