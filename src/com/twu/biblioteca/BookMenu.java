@@ -28,12 +28,12 @@ public class BookMenu {
         books.forEach(book -> System.out.println(book.getDisplayMessage()));
     }
 
-    public void checkoutBook(String bookName) {
-
+    public void checkoutBook(String bookName, User userLogin) {
         for (Book book : books) {
             if (bookName.equals(book.getName()) && !book.isCheckout()) {
                 book.setCheckout(true);
                 book.setReturn(false);
+
                 System.out.println("Thank you! Enjoy the book");
                 return;
             }
@@ -41,7 +41,7 @@ public class BookMenu {
         System.out.println("Sorry, that book is not available");
     }
 
-    public void returnBook(String bookName) {
+    public void returnBook(String bookName, User userLogin) {
         for (Book book : books) {
             if (bookName.equals(book.getName()) && book.isCheckout() && !book.isReturn()) {
                 book.setCheckout(false);
@@ -52,4 +52,10 @@ public class BookMenu {
         }
         System.out.println("That is not a valid book to return");
     }
+
+    // public void viewCheckoutedBooks() {
+    //     for (Book book : books) {
+    //         if (book.isCheckout())
+    //     }
+    // }
 }

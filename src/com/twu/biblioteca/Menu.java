@@ -12,6 +12,7 @@ public class Menu {
     private BookMenu bookMenu;
     private MovieMenu movieMenu;
     private UserMenu userMenu;
+    private User currentUser;
 
     public Menu() {
         this.quit = false;
@@ -23,13 +24,14 @@ public class Menu {
     }
 
     public void addOption() {
-        options.add(new Option(-1, "quit"));
+        options.add(new Option(-1, "Quit"));
         options.add(new Option(1, "List of books"));
         options.add(new Option(2, "Checkout out a book"));
         options.add(new Option(3, "Return a book"));
         options.add(new Option(4, "List of movies"));
         options.add(new Option(5, "Checkout out a movie"));
-        options.add(new Option(6, "login"));
+        options.add(new Option(6, "Login"));
+        options.add(new Option(7, "View books checkout"));
     }
 
     public void judgeUserInput() {
@@ -45,32 +47,54 @@ public class Menu {
         }
     }
 
-    public void judgeUserMenuInput(String userMenuInput) throws IOException {
+    public void judgeUserMenuInput(String menuUserInput) throws IOException {
         System.out.println("=====================");
-        if (userMenuInput.equals("1")) {
+        if (menuUserInput.equals("1")) {
             bookMenu.displayBooks();
-        } else if (userMenuInput.equals("-1")) {
+        } else if (menuUserInput.equals("-1")) {
             this.quit = true;
-        } else if (userMenuInput.equals("2")) {
-            System.out.println("Please input checkout book name: ");
-            String userBookInput = getUserInput();
-            bookMenu.checkoutBook(userBookInput);
-        } else if (userMenuInput.equals("3")) {
-            System.out.println("Please input return book name: ");
-            String userBookInput = getUserInput();
-            bookMenu.returnBook(userBookInput);
-        } else if (userMenuInput.equals("4")) {
+        } else if (menuUserInput.equals("2")) {
+            if (isValidCurrentUser()) {
+                System.out.println("Please input checkout book name: ");
+                String userBookInput = getUserInput();
+                bookMenu.checkoutBook(userBookInput, currentUser);
+            }
+        } else if (menuUserInput.equals("3")) {
+            if (isValidCurrentUser()) {
+                System.out.println("Please input return book name: ");
+                String userBookInput = getUserInput();
+                bookMenu.returnBook(userBookInput, currentUser);
+            }
+        } else if (menuUserInput.equals("4")) {
             movieMenu.displayMovieMenu();
-        } else if (userMenuInput.equals("5")) {
+        } else if (menuUserInput.equals("5")) {
             System.out.println("Please input checkout movie name: ");
             String userMovieInput = getUserInput();
             movieMenu.checkoutMovie(userMovieInput);
-        } else if (userMenuInput.equals("6")) {
+        } else if (menuUserInput.equals("6")) {
             System.out.println("please input your library number: ");
             String libraryNumber = getUserInput();
             System.out.println("please input your password: ");
             String password = getUserInput();
-            userMenu.userLogin(libraryNumber, password);
+            getLoginUser(libraryNumber, password);
+        } else if (menuUserInput.equals("7")) {
+
+
+        }
+    }
+
+    private boolean isValidCurrentUser() {
+        if (currentUser == null) {
+            System.out.println("Please sign in first.");
+            return false;
+        }
+        return true;
+    }
+
+    private void getLoginUser(String libraryNumber, String password) {
+        User user = userMenu.userLogin(libraryNumber, password);
+        if (user != null) {
+            this.currentUser = user;
         }
     }
 

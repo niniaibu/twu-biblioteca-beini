@@ -11,11 +11,13 @@ import static junit.framework.TestCase.assertEquals;
 public class BookMenuTest {
     private BookMenu bookMenu;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private User user;
 
     @Before
     public void setUp() {
         this.bookMenu = new BookMenu();
         System.setOut(new PrintStream(out));
+        this.user = new User("111-1111", "111111");
     }
 
     @Test
@@ -37,7 +39,7 @@ public class BookMenuTest {
     public void testBookCanCheckout() {
         String bookName = "Effective Java";
         String output = "Thank you! Enjoy the book\n";
-        bookMenu.checkoutBook(bookName);
+        bookMenu.checkoutBook(bookName, user);
         assertEquals(out.toString(), output);
     }
 
@@ -45,7 +47,7 @@ public class BookMenuTest {
     public void testBookCannotCheckoutWithFormatWrong() {
         String bookName = "effective java";
         String output = "Sorry, that book is not available\n";
-        bookMenu.checkoutBook(bookName);
+        bookMenu.checkoutBook(bookName, user);
         assertEquals(out.toString(), output);
     }
 
@@ -54,18 +56,18 @@ public class BookMenuTest {
         String bookName = "Effective Java";
         String output = "Thank you! Enjoy the book\n" +
                 "Sorry, that book is not available\n";
-        bookMenu.checkoutBook(bookName);
-        bookMenu.checkoutBook(bookName);
+        bookMenu.checkoutBook(bookName, user);
+        bookMenu.checkoutBook(bookName, user);
         assertEquals(out.toString(), output);
     }
 
     @Test
     public void testBookCanReturn() {
         String bookName = "Effective Java";
-        bookMenu.checkoutBook(bookName);
+        bookMenu.checkoutBook(bookName, user);
         String output = "Thank you! Enjoy the book\n" +
                 "Thank you for returning the book\n";
-        bookMenu.returnBook(bookName);
+        bookMenu.returnBook(bookName, user);
         assertEquals(out.toString(), output);
     }
 
@@ -73,19 +75,19 @@ public class BookMenuTest {
     public void testBookCannotReturnWithFormatWrong() {
         String bookName = "effective java";
         String output = "That is not a valid book to return\n";
-        bookMenu.returnBook(bookName);
+        bookMenu.returnBook(bookName, user);
         assertEquals(out.toString(), output);
     }
 
     @Test
     public void testBookCannotReturnWithTwice() {
         String bookName = "Effective Java";
-        bookMenu.checkoutBook(bookName);
+        bookMenu.checkoutBook(bookName, user);
         String output = "Thank you! Enjoy the book\n" +
                 "Thank you for returning the book\n" +
                 "That is not a valid book to return\n";
-        bookMenu.returnBook(bookName);
-        bookMenu.returnBook(bookName);
+        bookMenu.returnBook(bookName, user);
+        bookMenu.returnBook(bookName, user);
         assertEquals(out.toString(), output);
     }
 

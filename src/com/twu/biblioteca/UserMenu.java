@@ -22,13 +22,14 @@ public class UserMenu {
         return users;
     }
 
-    public void userLogin(String libraryNumber, String password) {
+    public User userLogin(String libraryNumber, String password) {
         for (User user : users) {
             if (user.login(libraryNumber, password)) {
                 System.out.println("Hi, " + user.getLibraryNumber() + " !");
-                return;
+                return user;
             }
         }
         System.out.println("Wrong, please input again");
+        return null;
     }
 }
