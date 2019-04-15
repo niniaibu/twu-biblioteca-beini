@@ -11,13 +11,15 @@ public class Menu {
     private boolean quit;
     private BookMenu bookMenu;
     private MovieMenu movieMenu;
+    private UserMenu userMenu;
 
     public Menu() {
         this.quit = false;
         this.options = new ArrayList<>();
+        addOption();
         this.bookMenu = new BookMenu();
         this.movieMenu = new MovieMenu();
-        addOption();
+        this.userMenu = new UserMenu();
     }
 
     public void addOption() {
@@ -27,6 +29,7 @@ public class Menu {
         options.add(new Option(3, "Return a book"));
         options.add(new Option(4, "List of movies"));
         options.add(new Option(5, "Checkout out a movie"));
+        options.add(new Option(6, "login"));
     }
 
     public void judgeUserInput() {
@@ -43,6 +46,7 @@ public class Menu {
     }
 
     public void judgeUserMenuInput(String userMenuInput) throws IOException {
+        System.out.println("=====================");
         if (userMenuInput.equals("1")) {
             bookMenu.displayBooks();
         } else if (userMenuInput.equals("-1")) {
@@ -61,6 +65,12 @@ public class Menu {
             System.out.println("Please input checkout movie name: ");
             String userMovieInput = getUserInput();
             movieMenu.checkoutMovie(userMovieInput);
+        } else if (userMenuInput.equals("6")) {
+            System.out.println("please input your library number: ");
+            String libraryNumber = getUserInput();
+            System.out.println("please input your password: ");
+            String password = getUserInput();
+            userMenu.userLogin(libraryNumber, password);
         }
     }
 
@@ -81,6 +91,7 @@ public class Menu {
 
 
     public void displayMenu() {
+        System.out.println("=========================");
         System.out.println("Main menu:");
         options.forEach(Option::displayOption);
     }

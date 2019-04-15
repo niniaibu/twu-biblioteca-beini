@@ -5,6 +5,7 @@ import java.util.List;
 
 public class BookMenu {
     private List<Book> books;
+    private User user;
 
     public BookMenu() {
         this.books = new ArrayList<>();
@@ -28,6 +29,7 @@ public class BookMenu {
     }
 
     public void checkoutBook(String bookName) {
+
         for (Book book : books) {
             if (bookName.equals(book.getName()) && !book.isCheckout()) {
                 book.setCheckout(true);
