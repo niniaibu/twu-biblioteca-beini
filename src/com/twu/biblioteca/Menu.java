@@ -32,6 +32,7 @@ public class Menu {
         options.add(new Option(5, "Checkout out a movie"));
         options.add(new Option(6, "Login"));
         options.add(new Option(7, "View books checkout"));
+        options.add(new Option(8, "View my information"));
     }
 
     public void judgeUserInput() {
@@ -79,6 +80,10 @@ public class Menu {
             getLoginUser(libraryNumber, password);
         } else if (menuUserInput.equals("7")) {
             bookMenu.viewCheckoutedBooks();
+        } else if (menuUserInput.equals("8")) {
+            if (isValidCurrentUser()) {
+                currentUser.displayMyInformation();
+            }
         }
     }
 

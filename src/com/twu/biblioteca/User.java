@@ -4,12 +4,18 @@ public class User {
     private String libraryNumber;
     private String password;
     private boolean loginState;
+    private String name;
+    private String email;
+    private String phoneNumber;
 
-    public User(String libraryNumber, String password) {
+    public User(String libraryNumber, String password, String name, String email, String phoneNumber) {
         if (isValidLibraryNumber(libraryNumber)) {
             this.libraryNumber = libraryNumber;
             this.password = password;
             this.loginState = false;
+            this.name = name;
+            this.email = email;
+            this.phoneNumber = phoneNumber;
         } else {
             System.out.println("Invalid User for wrong library number");
         }
@@ -41,5 +47,10 @@ public class User {
             return true;
         }
         return false;
+    }
+
+    public void displayMyInformation() {
+        String info = "name: " + this.name + "|" + "email: " + this.email + "|" + "phone number: " + this.phoneNumber;
+        System.out.println(info);
     }
 }

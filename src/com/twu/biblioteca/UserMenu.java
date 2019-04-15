@@ -12,10 +12,10 @@ public class UserMenu {
     }
 
     public void addUser() {
-        users.add(new User("111-1111", "111111"));
-        users.add(new User("222-2222", "222222"));
-        users.add(new User("333-3333", "333333"));
-        users.add(new User("444-4444", "444444"));
+        users.add(new User("111-1111", "111111", "zhangsan", "11111111@qq.com", "11111111111"));
+        users.add(new User("222-2222", "222222", "lisi", "222222222@qq.com", "22222222222"));
+        users.add(new User("333-3333", "333333", "wangwu", "333333333@qq.com", "33333333333"));
+        users.add(new User("444-4444", "444444", "beini", "4444444444@qq.com", "44444444444"));
     }
 
     public List<User> getUsers() {

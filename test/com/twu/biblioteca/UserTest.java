@@ -14,7 +14,7 @@ public class UserTest {
 
     @Before
     public void setUp() {
-        this.user = new User("123-1234", "123456");
+        this.user = new User("123-1234", "123456", "zhangsan", "11111111@qq.com", "11111111111");
         System.setOut(new PrintStream(out));
     }
 
@@ -37,7 +37,7 @@ public class UserTest {
     public void testCannotCreateUserWithWrongFormat() {
         String input = "1234-1234";
         String output = "Invalid User for wrong library number\n";
-        this.user = new User(input, "123456");
+        this.user = new User(input, "123456", "zhangsan", "11111111@qq.com", "11111111111");
         assertEquals(out.toString(), output);
     }
 
@@ -65,5 +65,12 @@ public class UserTest {
         String libraryNumber = "123-1234";
         String password = "111111";
         assertEquals(user.login(libraryNumber,password), false);
+    }
+
+    @Test
+    public void testLoginUserDisplay() {
+        String output = "name: zhangsan|email: 11111111@qq.com|phone number: 11111111111\n";
+        user.displayMyInformation();
+        assertEquals(out.toString(), output);
     }
 }

@@ -17,7 +17,7 @@ public class BookMenuTest {
     public void setUp() {
         this.bookMenu = new BookMenu();
         System.setOut(new PrintStream(out));
-        this.user = new User("111-1111", "111111");
+        this.user = new User("111-1111", "111111", "zhangsan", "11111111@qq.com", "11111111111");
     }
 
     @Test
