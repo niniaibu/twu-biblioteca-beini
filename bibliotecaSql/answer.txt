@@ -1,0 +1,36 @@
+1. Who checked out the book 'The Hobbit’?
+A:
+Anand Beck.
+
+
+2. How many people have not checked out anything?
+A:
+37
+
+
+3. What books and movies aren't checked out?
+A:
+1984
+Catcher in the Rye
+Crouching Tiger, Hidden Dragon
+Domain Driven Design
+Fellowship of the Ring
+Lawrence of Arabia
+Office Space
+Thin Red Line
+To Kill a Mockingbird
+Tom Sawyer
+
+
+4. Add the book 'The Pragmatic Programmer', and add yourself as a member. Check out 'The Pragmatic Programmer'. Use your query from question 1 to verify that you have checked it out. Also, provide the SQL used to update the database.
+A:
+insert into book values (11,'The Pragmatic Programmer');
+insert into member values (43, 'beini');
+insert into checkout_item values (43, 11, null);
+select name from member where id in (select member_id from checkout_item where book_id in (select id from book where title = "The Pragmatic Programmer"));
+
+
+5. Who has checked out more that 1 item? 
+A:
+Anand Beck
+Frank Smith
